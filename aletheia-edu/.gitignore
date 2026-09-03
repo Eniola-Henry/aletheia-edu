@@ -1,0 +1,27 @@
+# Python
+backend/venv/
+backend/__pycache__/
+backend/*.pyc
+backend/.env
+backend/.env.*
+
+# Node / Next.js
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
+
+# General
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+*.pdf
+*.zip
+*.tar.gz
+data/
+uploads/
+tmp/

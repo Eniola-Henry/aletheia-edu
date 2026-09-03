@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #f7f1e6;
+    color: #1c1916;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  ::selection {
+    background: #e5d9c4;
+    color: #1c1916;
+  }
+}
+
+/* Character idle life */
+@keyframes avatar-breathe {
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  50% { transform: scaleY(1.015) translateY(-1px); }
+}
+@keyframes avatar-blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  94%, 96% { transform: scaleY(0.08); }
+}
+.avatar-body-live {
+  transform-origin: 90px 160px;
+  animation: avatar-breathe 3.6s ease-in-out infinite;
+}
+.avatar-eye-live {
+  transform-origin: center;
+  animation: avatar-blink 4.2s ease-in-out infinite;
+}
+
+/* Soft page rise — Apple-like restraint */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.rise-in {
+  animation: rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.rise-in-delay-1 { animation-delay: 0.08s; }
+.rise-in-delay-2 { animation-delay: 0.16s; }
+.rise-in-delay-3 { animation-delay: 0.24s; }
+.rise-in-delay-4 { animation-delay: 0.32s; }
+
+/* Classical thin rule */
+.greek-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #1c1916 20%, #1c1916 80%, transparent);
+  opacity: 0.25;
+}
+
+/* Subtle meander-inspired corner marks */
+.greek-corner::before,
+.greek-corner::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: #1c1916;
+  opacity: 0.35;
+}
+.greek-corner::before {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+.greek-corner::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Mobile comfort */
+@layer utilities {
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+}
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus & press — accessible, calm */
+:focus-visible {
+  outline: 2px solid #1c1916;
+  outline-offset: 2px;
+}
+button:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise-in,
+  .rise-in-delay-1,
+  .rise-in-delay-2,
+  .rise-in-delay-3,
+  .rise-in-delay-4,
+  .avatar-body-live,
+  .avatar-eye-live {
+    animation: none !important;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  header, footer, button, nav, .no-print {
+    display: none !important;
+  }
+  main {
+    padding-top: 0 !important;
+  }
+  body {
+    background: white !important;
+  }
+}
