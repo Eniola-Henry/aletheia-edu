@@ -17,8 +17,7 @@ const GENRES = [
   { id: "mythic_fable", name: "Mythic Fable", blurb: "Simple, sharp lesson", mark: "μ" },
   { id: "survival_horror", name: "Survival Horror", blurb: "Tension, caution, scarce", mark: "X" },
 ];
-
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_API_URL || "http://localhost:8000";
+const BACKEND_URL = "https://aletheia-edu.onrender.com";
 
 export default function DashboardPage() {
   const router = useRouter();
